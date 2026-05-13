@@ -1,6 +1,6 @@
 # 你好，我是雨来 👋
 
-[![个人博客](https://img.shields.io/badge/Visit%20My%20Blog-%E9%9B%A8%E6%9D%A5%E7%9A%84%E5%8D%9A%E5%AE%A2-important)](http://yulai123.top)
+[![个人博客](https://img.shields.io/badge/Visit%20My%20Blog-%E9%9B%A8%E6%9D%A5%E7%9A%84%E5%8D%9A%E5%AE%A2-important)](https://yulai.org)
 
 > "**千里之行，始于足下**"  
 > 这是我的生活和工作信条，欢迎来到我的技术思想空间
@@ -22,7 +22,7 @@
 🔹 **《道德经》** - 经典国学的个人读书笔记与思考  
 🔹 **《设计模式-概论》** - 软件开发核心设计原则梳理
 
-> 更多深度内容：[雨来的数字花园](http://yulai123.top)
+> 更多深度内容：[雨来的数字花园](https://yulai.org)
 
 ## 🚀 正在进行的项目
 
@@ -35,5 +35,5 @@
 ## 📬 技术交流
 
 期待与同行深度探讨：  
-📧 **邮箱**： [thesky341@foxmail.com](mailto:thesky341@foxmail.com)  
+📧 **邮箱**： [yulai3412@gmail.com](mailto:yulai3412@gmail.com)  
 [👨‍💻 **GitHub**] [yulai](https://github.com/yulai-123)

@@ -1,9 +1,10 @@
 #!/bin/zsh
 
-git pull;
+set -euo pipefail
 
-ps -ef | grep hexo | grep -v grep | awk '{print $2}' | xargs kill -9;
+cd "$(dirname "$0")"
 
-hexo clean
-hexo generate
-nohup hexo server -p 2321 -s > logs/hexo.log 2>&1 &
+npm ci
+npm run build
+
+echo "Static site generated in ./public"

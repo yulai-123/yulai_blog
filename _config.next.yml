@@ -65,21 +65,13 @@ footer:
     color: "#808080"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2023006679号</a><br>		 	<div style="width:300px;margin:0 auto; padding:5px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602013166" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://yulai123.top/images/备案图标.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">浙公网安备 33010602013166号</p></a></div>
+  copyright: 雨来
 
   # Powered by Hexo & NexT
   powered: false
 
-  # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
     enable: false
-    icp:
-    # The digit in the num of gongan beian.
-    gongan_id:
-    # The full num of gongan beian.
-    gongan_num:
-    # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
-    gongan_icon_url:
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
@@ -180,7 +172,7 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/yulai-123 || github
-  E-Mail: mailto:thesky341@foxmail.com || envelope
+  E-Mail: mailto:yulai3412@gmail.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -713,7 +705,7 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi
 busuanzi_count:
-  enable: true
+  enable: false
   total_visitors: true
   total_visitors_icon: user
   total_views: true

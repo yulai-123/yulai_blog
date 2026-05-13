@@ -4,7 +4,7 @@
 
 # Site
 title: 雨来
-subtitle: "千里之行，始于足下\nthesky341@foxmail.com"
+subtitle: "千里之行，始于足下\nyulai3412@gmail.com"
 description: '一个程序员的日常分享'
 keywords: "程序员,技术,博客,日常"
 author: 雨来
@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://yulai123.top
+url: https://yulai.org
 permalink: :year/:day/:title/
 permalink_defaults:
 pretty_urls:
