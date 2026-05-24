@@ -82,7 +82,9 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+## Prefer deterministic post metadata: use `date` by default, and set
+## front-matter `updated` explicitly when an article is revised.
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
