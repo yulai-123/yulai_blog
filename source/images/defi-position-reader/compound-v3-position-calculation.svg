@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="820" viewBox="0 0 1240 820" role="img" aria-labelledby="title desc">
+  <title id="title">Compound V3 Position 计算链路</title>
+  <desc id="desc">展示 MetadataSyncer、metadata cache、Fetcher、Multicall3、链上合约调用和 yield、lending、reward Position 输出之间的数据流。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #dbe4ef; stroke-width: 1.2; rx: 12; filter: url(#shadow); }
+      .lane { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1.2; rx: 10; }
+      .box { stroke-width: 1.7; rx: 9; }
+      .sync { fill: #fff7ed; stroke: #fb923c; }
+      .store { fill: #f5f3ff; stroke: #a78bfa; }
+      .fetch { fill: #ecfdf5; stroke: #34d399; }
+      .call { fill: #eef2ff; stroke: #818cf8; }
+      .yield { fill: #f0fdfa; stroke: #14b8a6; }
+      .lending { fill: #eff6ff; stroke: #60a5fa; }
+      .reward { fill: #fefce8; stroke: #eab308; }
+      .risk { fill: #fff1f2; stroke: #fb7185; }
+      .line { stroke: #64748b; stroke-width: 1.8; fill: none; }
+      .soft { stroke: #94a3b8; }
+      .dash { stroke-dasharray: 7 6; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 30px; font-weight: 700; fill: #172033; letter-spacing: 0; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 15px; fill: #53647c; letter-spacing: 0; }
+      .lane-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 15px; font-weight: 700; fill: #334155; letter-spacing: 0; }
+      .node-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; font-weight: 700; fill: #111827; letter-spacing: 0; }
+      .node-note { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 12.5px; fill: #53647c; letter-spacing: 0; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 12px; fill: #475569; }
+      .formula { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 11.5px; fill: #334155; }
+      .small { font-size: 11.5px; fill: #64748b; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1240" height="820"/>
+  <rect class="panel" x="28" y="24" width="1184" height="768"/>
+
+  <text class="title" x="70" y="76">Compound V3 Position 计算链路</text>
+  <text class="subtitle" x="70" y="104">Fetcher 依赖 metadata 生成链上 calls，并把同一个 Comet 拆成 yield、lending 和 reward 三类 Position。</text>
+
+  <rect class="lane" x="70" y="142" width="1080" height="128"/>
+  <text class="lane-title" x="96" y="174">1. MetadataSyncer 写入公共数据</text>
+
+  <rect class="box sync" x="116" y="198" width="214" height="48"/>
+  <text class="node-title" x="223" y="219" text-anchor="middle">markets</text>
+  <text class="node-note" x="223" y="239" text-anchor="middle">Comet + base asset + price feed</text>
+
+  <rect class="box sync" x="404" y="198" width="246" height="48"/>
+  <text class="node-title" x="527" y="219" text-anchor="middle">collateral-assets</text>
+  <text class="node-note" x="527" y="239" text-anchor="middle">asset + scale + factor + price feed</text>
+
+  <rect class="box sync" x="724" y="198" width="226" height="48"/>
+  <text class="node-title" x="837" y="219" text-anchor="middle">reward-configs</text>
+  <text class="node-note" x="837" y="239" text-anchor="middle">rewards contract + reward token</text>
+
+  <rect class="box store" x="1000" y="190" width="106" height="64"/>
+  <text class="node-title" x="1053" y="216" text-anchor="middle">Cache</text>
+  <text class="node-note" x="1053" y="237" text-anchor="middle">SQLite</text>
+
+  <path class="line" marker-end="url(#arrow)" d="M330 222 H404"/>
+  <path class="line" marker-end="url(#arrow)" d="M650 222 H724"/>
+  <path class="line" marker-end="url(#arrow)" d="M950 222 H1000"/>
+
+  <rect class="lane" x="70" y="302" width="1080" height="210"/>
+  <text class="lane-title" x="96" y="334">2. Fetcher 按用户地址读取链上状态</text>
+
+  <rect class="box fetch" x="106" y="374" width="190" height="82"/>
+  <text class="node-title" x="201" y="401" text-anchor="middle">Fetcher</text>
+  <text class="node-note" x="201" y="423" text-anchor="middle">校验 metadata 是否存在</text>
+  <text class="node-note" x="201" y="444" text-anchor="middle">遍历每个 Comet</text>
+
+  <rect class="box call" x="374" y="350" width="248" height="112"/>
+  <text class="node-title" x="498" y="378" text-anchor="middle">Comet Calls</text>
+  <text class="mono" x="498" y="403" text-anchor="middle">balanceOf(owner)</text>
+  <text class="mono" x="498" y="424" text-anchor="middle">borrowBalanceOf(owner)</text>
+  <text class="mono" x="498" y="445" text-anchor="middle">collateralBalanceOf(owner, asset)</text>
+
+  <rect class="box call" x="694" y="350" width="256" height="112"/>
+  <text class="node-title" x="822" y="378" text-anchor="middle">Risk / Reward Calls</text>
+  <text class="mono" x="822" y="403" text-anchor="middle">getPrice(priceFeed)</text>
+  <text class="mono" x="822" y="424" text-anchor="middle">isBorrowCollateralized(owner)</text>
+  <text class="mono" x="822" y="445" text-anchor="middle">getRewardOwed(comet, owner)</text>
+
+  <rect class="box call" x="1000" y="374" width="108" height="82"/>
+  <text class="node-title" x="1054" y="405" text-anchor="middle">RPC</text>
+  <text class="node-note" x="1054" y="427" text-anchor="middle">Multicall3</text>
+  <text class="node-note" x="1054" y="447" text-anchor="middle">aggregate3</text>
+
+  <path class="line dash" marker-end="url(#arrow-soft)" d="M1053 254 V304 H201 V374"/>
+  <path class="line" marker-end="url(#arrow)" d="M296 415 H374"/>
+  <path class="line" marker-end="url(#arrow)" d="M622 406 H694"/>
+  <path class="line" marker-end="url(#arrow)" d="M950 415 H1000"/>
+
+  <rect class="lane" x="70" y="544" width="1080" height="216"/>
+  <text class="lane-title" x="96" y="576">3. 映射成统一 Position</text>
+
+  <rect class="box yield" x="110" y="620" width="258" height="112"/>
+  <text class="node-title" x="239" y="649" text-anchor="middle">Yield Position</text>
+  <text class="node-note" x="239" y="672" text-anchor="middle">用户供应 base asset</text>
+  <text class="formula" x="239" y="697" text-anchor="middle">shares = balanceOf(owner)</text>
+  <text class="formula" x="239" y="718" text-anchor="middle">underlying = shares as base asset</text>
+
+  <rect class="box lending" x="428" y="604" width="286" height="144"/>
+  <text class="node-title" x="571" y="633" text-anchor="middle">Lending Position</text>
+  <text class="node-note" x="571" y="656" text-anchor="middle">抵押资产 + base asset debt</text>
+  <text class="formula" x="571" y="681" text-anchor="middle">supply = collateralBalanceOf(...)</text>
+  <text class="formula" x="571" y="702" text-anchor="middle">debt = borrowBalanceOf(owner)</text>
+  <text class="formula" x="571" y="723" text-anchor="middle">health = liquidationCapacity / debtValue</text>
+
+  <rect class="box reward" x="774" y="620" width="258" height="112"/>
+  <text class="node-title" x="903" y="649" text-anchor="middle">Reward Position</text>
+  <text class="node-note" x="903" y="672" text-anchor="middle">只补充展示可领取奖励</text>
+  <text class="formula" x="903" y="697" text-anchor="middle">claimable = getRewardOwed(...)</text>
+  <text class="formula" x="903" y="718" text-anchor="middle">不参与本金 / 债务 / 风险计算</text>
+
+  <rect class="box risk" x="1046" y="634" width="86" height="84"/>
+  <text class="node-title" x="1089" y="665" text-anchor="middle">Trace</text>
+  <text class="node-note" x="1089" y="687" text-anchor="middle">calls</text>
+  <text class="node-note" x="1089" y="707" text-anchor="middle">metadata</text>
+
+  <path class="line" marker-end="url(#arrow)" d="M498 462 V526 H239 V620"/>
+  <path class="line" marker-end="url(#arrow)" d="M498 462 V526 H571 V604"/>
+  <path class="line" marker-end="url(#arrow)" d="M822 462 V526 H903 V620"/>
+  <path class="line soft" marker-end="url(#arrow-soft)" d="M714 676 H774"/>
+  <path class="line soft" marker-end="url(#arrow-soft)" d="M1032 676 H1046"/>
+</svg>
